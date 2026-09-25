@@ -7,7 +7,15 @@ export function Fish({ className }: { className?: string }) {
       </g>
       {/* corpo */}
       <ellipse cx="66" cy="40" rx="38" ry="24" fill="var(--coral)" />
-      <ellipse cx="66" cy="40" rx="38" ry="24" fill="none" stroke="var(--coral-soft)" strokeWidth="3" />
+      <ellipse
+        cx="66"
+        cy="40"
+        rx="38"
+        ry="24"
+        fill="none"
+        stroke="var(--coral-soft)"
+        strokeWidth="3"
+      />
       {/* nadadeira superior */}
       <g className="anim-fin" style={{ transformOrigin: "62px 20px", animationDuration: "1.6s" }}>
         <path d="M52 20 L74 8 L78 22 Z" fill="var(--coral-soft)" />

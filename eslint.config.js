@@ -37,4 +37,8 @@ export default tseslint.config(
     },
   },
   eslintPluginPrettier,
+  {
+    files: ["src/integrations/supabase/**/*.{ts,tsx}"],
+    rules: { "prettier/prettier": "off", "prefer-const": "off" },
+  },
 );

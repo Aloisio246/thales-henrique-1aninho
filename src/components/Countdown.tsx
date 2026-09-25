@@ -15,21 +15,22 @@ function diferenca(alvo: Date) {
 }
 
 export function Countdown() {
-  const [tempo, setTempo] = useState(() => diferenca(DATA_FESTA));
+  const [tempo, setTempo] = useState<ReturnType<typeof diferenca> | null>(null);
 
   useEffect(() => {
+    setTempo(diferenca(DATA_FESTA));
     const id = setInterval(() => setTempo(diferenca(DATA_FESTA)), 1000);
     return () => clearInterval(id);
   }, []);
 
   const itens = [
-    { valor: tempo.dias, rotulo: "dias" },
-    { valor: tempo.horas, rotulo: "horas" },
-    { valor: tempo.minutos, rotulo: "min" },
-    { valor: tempo.segundos, rotulo: "seg" },
+    { valor: tempo?.dias, rotulo: "dias" },
+    { valor: tempo?.horas, rotulo: "horas" },
+    { valor: tempo?.minutos, rotulo: "min" },
+    { valor: tempo?.segundos, rotulo: "seg" },
   ];
 
-  if (tempo.total === 0) {
+  if (tempo?.total === 0) {
     return (
       <p className="text-center font-display text-xl font-bold text-deep">
         É hoje! A aventura no fundo do mar começou 💙
@@ -40,19 +41,16 @@ export function Countdown() {
   return (
     <div>
       <h2 className="text-center font-display text-xl font-bold text-deep sm:text-2xl">
-        Faltam pouquinho para a festa!
+        Falta pouquinho para a festa!
       </h2>
       <ul
         className="mt-4 grid grid-cols-4 gap-2 sm:gap-4"
-        aria-label={`Faltam ${tempo.dias} dias, ${tempo.horas} horas, ${tempo.minutos} minutos e ${tempo.segundos} segundos`}
+        aria-label="Contagem regressiva para a festa"
       >
         {itens.map((item) => (
-          <li
-            key={item.rotulo}
-            className="rounded-2xl bg-white/90 px-1 py-3 text-center shadow-soft"
-          >
+          <li key={item.rotulo} className="rounded-[1.5rem] bg-white/65 px-1 py-3 text-center">
             <span className="block font-display text-2xl font-extrabold text-primary sm:text-4xl">
-              {String(item.valor).padStart(2, "0")}
+              {item.valor === undefined ? "--" : String(item.valor).padStart(2, "0")}
             </span>
             <span className="text-xs uppercase tracking-wide text-muted-foreground sm:text-sm">
               {item.rotulo}
