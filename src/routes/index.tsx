@@ -45,20 +45,41 @@ function Convite() {
           <p className="mt-2 inline-block rounded-full bg-white/90 px-6 py-1 font-display text-2xl font-extrabold text-accent sm:text-3xl">
             1 aninho
           </p>
-          <p className="mx-auto mt-4 max-w-xl text-base font-semibold text-white sm:text-lg">
-            Venha comemorar com a gente esse dia tão especial!
+          <p className="mx-auto mt-4 max-w-xl font-display text-xl font-bold text-white sm:text-2xl">
+            O fundo do mar está em festa!
           </p>
 
           <div className="mt-8">
             <ThalesPhoto />
           </div>
+          <a
+            href="#convite"
+            className="mt-8 inline-flex items-center gap-2 text-sm font-bold text-white/95 underline-offset-4 hover:underline"
+          >
+            Mergulhe no convite <span aria-hidden="true">↓</span>
+          </a>
         </div>
       </section>
 
-      {/* CONTAGEM + EVENTO */}
-      <section className="relative mx-auto -mt-10 max-w-3xl px-4">
-        <div className="rounded-3xl bg-aqua-soft/70 p-5 shadow-float backdrop-blur-sm sm:p-8">
-          <Countdown />
+      <section id="convite" className="mx-auto max-w-2xl px-6 py-14 text-center sm:py-20">
+        <span aria-hidden="true" className="text-3xl">
+          🐚
+        </span>
+        <h2 className="mt-3 font-display text-2xl font-extrabold text-deep sm:text-3xl">
+          Uma aventura para celebrar
+        </h2>
+        <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-foreground">
+          Venha mergulhar com a gente nessa aventura e comemorar o primeiro aninho do nosso pequeno
+          Thales.
+        </p>
+      </section>
+
+      {/* FESTA */}
+      <section className="mx-auto max-w-3xl px-4">
+        <div className="rounded-[2.5rem] bg-aqua-soft/70 p-5 shadow-float sm:p-8">
+          <p className="text-center text-sm font-bold uppercase tracking-[0.2em] text-deep/75">
+            O nosso encontro
+          </p>
 
           <dl className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
             {[
@@ -66,10 +87,7 @@ function Convite() {
               { termo: "Horário", valor: "16h", icone: "⏰" },
               { termo: "Local", valor: "LL Espaço de Festa", icone: "🐚" },
             ].map((item) => (
-              <div
-                key={item.termo}
-                className="rounded-2xl bg-white/90 p-4 text-center shadow-soft"
-              >
+              <div key={item.termo} className="rounded-[1.75rem] bg-white/65 p-4 text-center">
                 <span aria-hidden="true" className="text-2xl">
                   {item.icone}
                 </span>
@@ -81,7 +99,7 @@ function Convite() {
             ))}
           </dl>
 
-          <div className="mt-6 rounded-2xl bg-white/90 p-4 text-center shadow-soft">
+          <div className="mt-6 rounded-[1.75rem] bg-white/65 p-4 text-center">
             <p className="text-sm text-muted-foreground">Endereço</p>
             <p className="font-display text-lg font-bold text-deep">
               Rua 23, São João del Rei — Cuiabá/MT
@@ -98,8 +116,23 @@ function Convite() {
         </div>
       </section>
 
+      <section className="mx-auto mt-12 max-w-3xl px-4">
+        <div className="rounded-[2.5rem] bg-sand/75 px-4 py-7 sm:px-8">
+          <Countdown />
+        </div>
+      </section>
+
       {/* RSVP */}
       <section id="confirmar" className="mx-auto mt-12 max-w-2xl px-4 pb-4">
+        <div className="mb-7 px-2 text-center">
+          <h2 className="font-display text-2xl font-extrabold text-deep">
+            Sua confirmação é muito importante 💙
+          </h2>
+          <p className="mx-auto mt-3 max-w-xl leading-relaxed text-foreground">
+            Confirme apenas se realmente pretende participar. Assim conseguimos organizar tudo com
+            carinho e preparar a festa na medida certa para receber vocês.
+          </p>
+        </div>
         <RsvpForm />
       </section>
 

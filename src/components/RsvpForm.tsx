@@ -102,13 +102,13 @@ export function RsvpForm() {
     return (
       <div
         role="status"
-        className="rounded-3xl bg-white/95 p-6 text-center shadow-float sm:p-8"
+        className="rsvp-success rounded-[2.5rem] bg-aqua-soft p-6 text-center shadow-float sm:p-8"
       >
         <span aria-hidden="true" className="text-4xl">
-          🐠
+          🐢
         </span>
         <p className="mt-3 font-display text-xl font-bold text-deep sm:text-2xl">
-          Presença confirmada! Esperamos vocês para viver essa aventura no fundo do mar 💙
+          Tudo certo! Sua presença foi confirmada 🐢💙
         </p>
       </div>
     );
@@ -118,7 +118,7 @@ export function RsvpForm() {
     <form
       onSubmit={handleSubmit}
       noValidate
-      className="rounded-3xl bg-white/95 p-5 shadow-float sm:p-8"
+      className="rounded-[2.5rem] bg-white/90 p-5 shadow-float sm:p-8"
     >
       <h2 className="font-display text-2xl font-extrabold text-deep sm:text-3xl">
         Confirmar presença
@@ -156,13 +156,17 @@ export function RsvpForm() {
           <div>
             <Contador id="adultos" rotulo="Adultos" valor={adultos} onChange={setAdultos} />
             {erros.adultos && (
-              <p className="mt-1 text-sm font-medium text-destructive">{erros.adultos}</p>
+              <p role="alert" className="mt-1 text-sm font-medium text-destructive">
+                {erros.adultos}
+              </p>
             )}
           </div>
           <div>
             <Contador id="criancas" rotulo="Crianças" valor={criancas} onChange={setCriancas} />
             {erros.criancas && (
-              <p className="mt-1 text-sm font-medium text-destructive">{erros.criancas}</p>
+              <p role="alert" className="mt-1 text-sm font-medium text-destructive">
+                {erros.criancas}
+              </p>
             )}
           </div>
         </div>
@@ -185,7 +189,7 @@ export function RsvpForm() {
 
         {erros.geral && (
           <p role="alert" className="text-sm font-medium text-destructive">
-            {erros.geral}
+            {erros.geral} Seus dados continuam aqui para você tentar novamente.
           </p>
         )}
 
@@ -195,7 +199,7 @@ export function RsvpForm() {
           aria-busy={enviando}
           className="coral-gradient h-14 w-full rounded-full font-display text-lg font-extrabold text-accent-foreground shadow-soft transition-transform active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70"
         >
-          {enviando ? "Enviando..." : "Confirmar presença"}
+          {enviando ? "Salvando sua confirmação..." : "Confirmar presença"}
         </button>
       </div>
     </form>

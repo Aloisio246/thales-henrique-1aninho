@@ -16,17 +16,17 @@ export function SeaBackground() {
 
       <Bubbles />
 
-      <div className="absolute inset-x-0 top-[22%] anim-swim">
+      <div className="absolute inset-x-0 top-[44%] anim-swim opacity-75">
         <Fish className="h-10 w-14 sm:h-14 sm:w-20" />
       </div>
       <div
-        className="absolute inset-x-0 top-[58%] anim-swim opacity-80"
+        className="absolute inset-x-0 top-[68%] anim-swim opacity-70"
         style={{ animationDuration: "38s", animationDelay: "-12s" }}
       >
         <Fish className="h-7 w-10 scale-x-[-1] sm:h-9 sm:w-14" />
       </div>
 
-      <div className="absolute bottom-[14%] right-[6%] anim-bob">
+      <div className="absolute bottom-[10%] right-[6%] anim-bob opacity-80">
         <Turtle className="h-16 w-20 sm:h-24 sm:w-32" />
       </div>
 
@@ -36,12 +36,12 @@ export function SeaBackground() {
           className="h-16 w-6 anim-sway sm:h-24 sm:w-8"
           style={{ animationDuration: "7.5s", animationDelay: "-2s" }}
         />
-        <Coral className="h-14 w-16 anim-sway sm:h-20 sm:w-24" />
+        <Coral className="h-14 w-16 anim-coral sm:h-20 sm:w-24" />
       </div>
 
       <div className="absolute bottom-0 right-0 flex items-end gap-2 sm:gap-4">
         <Coral
-          className="h-12 w-14 anim-sway sm:h-16 sm:w-20"
+          className="h-12 w-14 anim-coral sm:h-16 sm:w-20"
           style={{ animationDuration: "8s", animationDelay: "-3s" }}
         />
         <Seaweed

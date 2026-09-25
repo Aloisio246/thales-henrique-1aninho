@@ -41,12 +41,12 @@ function Admin() {
   const [entrando, setEntrando] = useState(false);
   const [busca, setBusca] = useState("");
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["confirmacoes"],
     queryFn: () => listar(),
   });
 
-  const confirmacoes = data?.confirmacoes ?? [];
+  const confirmacoes = useMemo(() => data?.confirmacoes ?? [], [data]);
 
   const totais = useMemo(() => {
     const adultos = confirmacoes.reduce((soma, item) => soma + item.adultos, 0);
@@ -84,6 +84,31 @@ function Admin() {
     return (
       <main className="sea-gradient flex min-h-screen items-center justify-center px-4">
         <p className="font-display text-lg font-bold text-white">Carregando...</p>
+      </main>
+    );
+  }
+
+  if (isError) {
+    return (
+      <main className="sea-gradient flex min-h-screen items-center justify-center px-4">
+        <div
+          role="alert"
+          className="w-full max-w-md rounded-3xl bg-white/95 p-6 text-center shadow-float"
+        >
+          <h1 className="font-display text-2xl font-extrabold text-deep">
+            Não foi possível carregar as confirmações
+          </h1>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Os dados não foram exibidos. Tente novamente em instantes.
+          </p>
+          <button
+            type="button"
+            onClick={() => void refetch()}
+            className="mt-5 rounded-full bg-primary px-6 py-3 font-bold text-white"
+          >
+            Tentar novamente
+          </button>
+        </div>
       </main>
     );
   }
@@ -208,7 +233,9 @@ function Admin() {
               {filtradas.length === 0 ? (
                 <tr>
                   <td colSpan={5} className="px-4 py-8 text-center text-muted-foreground">
-                    Nenhuma confirmação encontrada.
+                    {busca
+                      ? "Nenhum nome encontrado para esta busca."
+                      : "Ainda não há confirmações."}
                   </td>
                 </tr>
               ) : (
