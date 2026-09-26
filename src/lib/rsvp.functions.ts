@@ -37,8 +37,12 @@ export type RsvpRow = {
 type AdminSession = { admin?: boolean };
 
 function sessionConfig() {
+  const password = process.env["SESSION_SECRET"];
+  if (!password || password.length < 32) {
+    throw new Error("CONFIG: sessão do painel não configurada.");
+  }
   return {
-    password: process.env["SESSION_SECRET"]!,
+    password,
     name: "thales-admin",
     maxAge: 60 * 60 * 12,
     cookie: { httpOnly: true, secure: true, sameSite: "lax" as const, path: "/" },
