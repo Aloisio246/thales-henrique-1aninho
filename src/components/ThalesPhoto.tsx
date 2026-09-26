@@ -1,8 +1,8 @@
 export function ThalesPhoto() {
   return (
     <div className="relative mx-auto w-full max-w-sm">
-      <div className="rounded-[2.5rem] bg-white/85 p-3 shadow-float backdrop-blur-sm">
-        <div className="aspect-[4/5] overflow-hidden rounded-[2rem] border-4 border-aqua/60 bg-aqua-soft">
+      <div className="rounded-[47%_47%_43%_43%/7%_7%_5%_5%] border-[5px] border-white/90 bg-white/85 p-1.5">
+        <div className="aspect-[4/5] overflow-hidden rounded-[47%_47%_43%_43%/6%_6%_4%_4%] bg-aqua-soft">
           <picture>
             <source
               type="image/webp"

@@ -25,7 +25,7 @@ function Contador({
           type="button"
           aria-label={`Diminuir ${rotulo}`}
           onClick={() => onChange(Math.max(0, valor - 1))}
-          className="h-11 w-11 shrink-0 rounded-full bg-secondary font-display text-xl font-bold text-secondary-foreground transition-transform active:scale-95"
+          className="rsvp-stepper h-11 w-11 shrink-0 rounded-full font-display text-xl font-bold text-deep transition-transform active:scale-95"
         >
           −
         </button>
@@ -42,13 +42,13 @@ function Contador({
             const numero = Number.parseInt(event.target.value, 10);
             onChange(Number.isNaN(numero) ? 0 : Math.min(20, Math.max(0, numero)));
           }}
-          className="h-11 w-full min-w-0 rounded-xl border border-input bg-white text-center font-display text-lg font-bold text-deep"
+          className="h-11 w-full min-w-0 rounded-full border text-center font-display text-lg font-bold text-deep"
         />
         <button
           type="button"
           aria-label={`Aumentar ${rotulo}`}
           onClick={() => onChange(Math.min(20, valor + 1))}
-          className="h-11 w-11 shrink-0 rounded-full bg-secondary font-display text-xl font-bold text-secondary-foreground transition-transform active:scale-95"
+          className="rsvp-stepper h-11 w-11 shrink-0 rounded-full font-display text-xl font-bold text-deep transition-transform active:scale-95"
         >
           +
         </button>
@@ -79,10 +79,15 @@ export function RsvpForm() {
         if (campo) novos[campo] = issue.message;
       }
       setErros(novos);
+      const primeiroCampo = resultado.error.issues[0]?.path[0];
+      if (typeof primeiroCampo === "string") {
+        event.currentTarget.querySelector<HTMLElement>(`[name="${primeiroCampo}"]`)?.focus();
+      }
       return;
     }
     if (adultos + criancas < 1) {
       setErros({ adultos: "Informe pelo menos uma pessoa" });
+      event.currentTarget.querySelector<HTMLElement>('[name="adultos"]')?.focus();
       return;
     }
 
@@ -100,10 +105,7 @@ export function RsvpForm() {
 
   if (confirmado) {
     return (
-      <div
-        role="status"
-        className="rsvp-success rounded-[2.5rem] bg-aqua-soft p-6 text-center shadow-float sm:p-8"
-      >
+      <div role="status" className="rsvp-success bg-sand p-8 text-center shadow-float sm:p-10">
         <span aria-hidden="true" className="text-4xl">
           🐢
         </span>
@@ -115,12 +117,8 @@ export function RsvpForm() {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      noValidate
-      className="rounded-[2.5rem] bg-white/90 p-5 shadow-float sm:p-8"
-    >
-      <h2 className="font-display text-2xl font-extrabold text-deep sm:text-3xl">
+    <form onSubmit={handleSubmit} noValidate className="rsvp-form p-6 sm:p-9">
+      <h2 className="font-display text-3xl font-extrabold text-deep sm:text-4xl">
         Confirmar presença
       </h2>
       <p className="mt-1 text-sm text-muted-foreground">
@@ -142,7 +140,7 @@ export function RsvpForm() {
             onChange={(event) => setNome(event.target.value)}
             aria-invalid={Boolean(erros.nome)}
             aria-describedby={erros.nome ? "erro-nome" : undefined}
-            className="h-12 w-full rounded-xl border border-input bg-white px-4 text-base text-deep"
+            className="h-12 w-full rounded-2xl border px-4 text-base text-deep"
             placeholder="Ex.: Família Silva"
           />
           {erros.nome && (
@@ -182,7 +180,7 @@ export function RsvpForm() {
             maxLength={500}
             value={observacao}
             onChange={(event) => setObservacao(event.target.value)}
-            className="w-full rounded-xl border border-input bg-white p-3 text-base text-deep"
+            className="w-full rounded-2xl border p-4 text-base text-deep"
             placeholder="Alguma restrição alimentar, recado ou dúvida?"
           />
         </div>
@@ -197,7 +195,7 @@ export function RsvpForm() {
           type="submit"
           disabled={enviando}
           aria-busy={enviando}
-          className="coral-gradient h-14 w-full rounded-full font-display text-lg font-extrabold text-accent-foreground shadow-soft transition-transform active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70"
+          className="rsvp-submit h-14 w-full rounded-full font-display text-lg font-extrabold text-accent-foreground transition-transform active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70"
         >
           {enviando ? "Salvando sua confirmação..." : "Confirmar presença"}
         </button>
