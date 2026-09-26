@@ -26,8 +26,8 @@ export function Countdown() {
   const itens = [
     { valor: tempo?.dias, rotulo: "dias" },
     { valor: tempo?.horas, rotulo: "horas" },
-    { valor: tempo?.minutos, rotulo: "min" },
-    { valor: tempo?.segundos, rotulo: "seg" },
+    { valor: tempo?.minutos, rotulo: "minutos" },
+    { valor: tempo?.segundos, rotulo: "segundos" },
   ];
 
   if (tempo?.total === 0) {
@@ -40,19 +40,19 @@ export function Countdown() {
 
   return (
     <div>
-      <h2 className="text-center font-display text-xl font-bold text-deep sm:text-2xl">
+      <h2 className="text-center font-display font-bold text-deep">
         Falta pouquinho para a festa!
       </h2>
       <ul
-        className="mt-4 grid grid-cols-4 gap-2 sm:gap-4"
+        className="countdown-bubbles mx-auto mt-7 max-w-xl"
         aria-label="Contagem regressiva para a festa"
       >
         {itens.map((item) => (
-          <li key={item.rotulo} className="rounded-[1.5rem] bg-white/65 px-1 py-3 text-center">
-            <span className="block font-display text-2xl font-extrabold text-primary sm:text-4xl">
+          <li key={item.rotulo} className="text-center">
+            <span className="block font-display text-2xl font-extrabold leading-none text-deep sm:text-4xl">
               {item.valor === undefined ? "--" : String(item.valor).padStart(2, "0")}
             </span>
-            <span className="text-xs uppercase tracking-wide text-muted-foreground sm:text-sm">
+            <span className="mt-1 text-[0.65rem] font-bold uppercase tracking-wide text-deep/75 sm:text-xs">
               {item.rotulo}
             </span>
           </li>

@@ -1,6 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { SeaBackground } from "@/components/sea/SeaBackground";
+import { Seaweed } from "@/components/sea/Seaweed";
+import { Coral } from "@/components/sea/Coral";
+import { Turtle } from "@/components/sea/Turtle";
+import { ShellMark } from "@/components/sea/ShellMark";
 import { ThalesPhoto } from "@/components/ThalesPhoto";
 import { Countdown } from "@/components/Countdown";
 import { RsvpForm } from "@/components/RsvpForm";
@@ -30,115 +34,148 @@ export const Route = createFileRoute("/")({
 
 function Convite() {
   return (
-    <main className="min-h-screen bg-background">
-      {/* HERO */}
-      <section className="sea-gradient relative overflow-hidden px-4 pb-20 pt-12 sm:pb-28 sm:pt-16">
+    <main className="invitation min-h-screen overflow-hidden">
+      <section className="hero-sea relative isolate overflow-hidden px-5 pb-24 pt-10 text-center sm:pb-28 sm:pt-14">
         <SeaBackground />
-
-        <div className="relative mx-auto max-w-3xl text-center">
-          <p className="font-display text-base font-bold uppercase tracking-[0.25em] text-white/90">
-            Thales no fundo do mar
-          </p>
-          <h1 className="mt-2 font-display text-4xl font-extrabold text-white drop-shadow-[0_3px_10px_rgba(12,40,70,0.45)] sm:text-6xl">
-            Thales Henrique
-          </h1>
-          <p className="mt-2 inline-block rounded-full bg-white/90 px-6 py-1 font-display text-2xl font-extrabold text-accent sm:text-3xl">
-            1 aninho
-          </p>
-          <p className="mx-auto mt-4 max-w-xl font-display text-xl font-bold text-white sm:text-2xl">
+        <div className="relative z-10 mx-auto max-w-3xl">
+          <p className="hero-eyebrow text-white/90">Um convite para mergulhar</p>
+          <h1 className="hero-name mt-3 text-white">Thales Henrique</h1>
+          <p className="hero-age mt-1 text-sand">1 aninho</p>
+          <p className="mx-auto mt-2 max-w-md font-display text-xl font-bold text-white sm:text-2xl">
             O fundo do mar está em festa!
           </p>
 
-          <div className="mt-8">
+          <div className="hero-photo mx-auto mt-7 max-w-[min(86vw,25rem)] sm:mt-8">
             <ThalesPhoto />
           </div>
+
           <a
             href="#convite"
-            className="mt-8 inline-flex items-center gap-2 text-sm font-bold text-white/95 underline-offset-4 hover:underline"
+            className="dive-cue mt-7 inline-flex flex-col items-center text-white/90"
           >
-            Mergulhe no convite <span aria-hidden="true">↓</span>
+            <span>mergulhe</span>
+            <span aria-hidden="true" className="dive-arrow">
+              ↓
+            </span>
           </a>
+        </div>
+        <div aria-hidden="true" className="hero-wave absolute inset-x-0 bottom-0">
+          <svg viewBox="0 0 1200 72" preserveAspectRatio="none" focusable="false">
+            <path d="M0 31 C170 7 320 59 496 34 S830 9 1200 41 V72 H0Z" />
+          </svg>
         </div>
       </section>
 
-      <section id="convite" className="mx-auto max-w-2xl px-6 py-14 text-center sm:py-20">
-        <span aria-hidden="true" className="text-3xl">
-          🐚
-        </span>
-        <h2 className="mt-3 font-display text-2xl font-extrabold text-deep sm:text-3xl">
-          Uma aventura para celebrar
-        </h2>
-        <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-foreground">
-          Venha mergulhar com a gente nessa aventura e comemorar o primeiro aninho do nosso pequeno
-          Thales.
-        </p>
-      </section>
+      <div className="sea-journey relative isolate">
+        <span aria-hidden="true" className="journey-bubble journey-bubble-one" />
+        <span aria-hidden="true" className="journey-bubble journey-bubble-two" />
 
-      {/* FESTA */}
-      <section className="mx-auto max-w-3xl px-4">
-        <div className="rounded-[2.5rem] bg-aqua-soft/70 p-5 shadow-float sm:p-8">
-          <p className="text-center text-sm font-bold uppercase tracking-[0.2em] text-deep/75">
-            O nosso encontro
+        <section
+          id="convite"
+          className="relative mx-auto max-w-2xl px-7 pb-14 pt-12 text-center sm:pb-20 sm:pt-20"
+        >
+          <ShellMark className="invitation-shell mx-auto h-7 w-7" />
+          <h2 className="mt-2 font-display text-3xl font-extrabold text-deep sm:text-4xl">
+            Uma aventura para celebrar
+          </h2>
+          <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-foreground sm:text-xl">
+            Venha mergulhar com a gente nessa aventura e comemorar o primeiro aninho do nosso
+            pequeno Thales.
           </p>
+        </section>
 
-          <dl className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
-            {[
-              { termo: "Data", valor: "05 de dezembro de 2026", icone: "🗓️" },
-              { termo: "Horário", valor: "16h", icone: "⏰" },
-              { termo: "Local", valor: "LL Espaço de Festa", icone: "🐚" },
-            ].map((item) => (
-              <div key={item.termo} className="rounded-[1.75rem] bg-white/65 p-4 text-center">
-                <span aria-hidden="true" className="text-2xl">
-                  {item.icone}
-                </span>
-                <dt className="mt-1 text-xs uppercase tracking-wide text-muted-foreground">
-                  {item.termo}
-                </dt>
-                <dd className="font-display text-lg font-bold text-deep">{item.valor}</dd>
+        <section
+          className="party-section relative mx-auto max-w-3xl px-5 pb-18 sm:px-8"
+          aria-labelledby="party-title"
+        >
+          <div className="party-plaque relative px-7 py-8 text-center sm:px-12 sm:py-14">
+            <span aria-hidden="true" className="party-star party-star-left">
+              ✦
+            </span>
+            <span aria-hidden="true" className="party-star party-star-right">
+              ✦
+            </span>
+            <p className="section-kicker">Prepare o coração</p>
+            <h2
+              id="party-title"
+              className="mt-2 font-display text-3xl font-extrabold text-deep sm:text-4xl"
+            >
+              Nosso encontro no fundo do mar
+            </h2>
+            <dl className="party-details mx-auto mt-6 max-w-xl sm:mt-9">
+              <div>
+                <dt>Quando</dt>
+                <dd>05 de dezembro de 2026</dd>
               </div>
-            ))}
-          </dl>
-
-          <div className="mt-6 rounded-[1.75rem] bg-white/65 p-4 text-center">
-            <p className="text-sm text-muted-foreground">Endereço</p>
-            <p className="font-display text-lg font-bold text-deep">
+              <div>
+                <dt>Às</dt>
+                <dd>16h</dd>
+              </div>
+              <div>
+                <dt>Onde</dt>
+                <dd>LL Espaço de Festa</dd>
+              </div>
+            </dl>
+            <p className="mt-5 text-sm font-bold uppercase tracking-[0.16em] text-deep/65 sm:mt-7">
+              Endereço
+            </p>
+            <p className="mx-auto mt-2 max-w-sm text-base font-semibold leading-relaxed text-deep sm:text-lg">
               Rua 23, São João del Rei — Cuiabá/MT
             </p>
             <a
               href={MAPS_URL}
               target="_blank"
               rel="noreferrer noopener"
-              className="mt-4 inline-flex h-12 items-center justify-center rounded-full bg-primary px-8 font-display text-base font-bold text-primary-foreground shadow-soft transition-transform active:scale-[0.98]"
+              className="map-link mt-5 inline-flex min-h-12 items-center justify-center px-9 font-display text-lg font-bold text-white sm:mt-7"
             >
-              Como chegar
+              Como chegar{" "}
+              <span aria-hidden="true" className="ml-2">
+                ↗
+              </span>
             </a>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="mx-auto mt-12 max-w-3xl px-4">
-        <div className="rounded-[2.5rem] bg-sand/75 px-4 py-7 sm:px-8">
+        <section className="countdown-section relative mx-auto max-w-3xl px-5 pb-16 pt-3 sm:px-8 sm:pb-24">
           <Countdown />
+        </section>
+
+        <div aria-hidden="true" className="journey-wave relative h-20 sm:h-28">
+          <svg
+            className="journey-wave-top"
+            viewBox="0 0 1200 72"
+            preserveAspectRatio="none"
+            focusable="false"
+          >
+            <path d="M0 0 H1200 V34 C984 64 839 9 617 39 S201 57 0 24Z" />
+          </svg>
+          <Seaweed className="anim-sway absolute bottom-0 left-[4%] h-20 w-7 opacity-60 sm:h-28 sm:w-10" />
+          <Coral className="absolute bottom-0 right-[5%] h-12 w-16 opacity-70 sm:h-18 sm:w-22" />
+        </div>
+      </div>
+
+      <section id="confirmar" className="rsvp-sea relative px-5 pb-16 pt-10 sm:pb-24 sm:pt-16">
+        <span aria-hidden="true" className="journey-bubble rsvp-bubble-one" />
+        <span aria-hidden="true" className="journey-bubble rsvp-bubble-two" />
+        <div className="relative mx-auto max-w-2xl">
+          <div className="mx-auto mb-7 max-w-xl text-center sm:mb-9">
+            <h2 className="font-display text-3xl font-extrabold leading-tight text-deep sm:text-4xl">
+              Sua confirmação é muito importante
+            </h2>
+            <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-foreground sm:text-lg">
+              Confirme apenas se realmente pretende participar. Assim conseguimos organizar tudo com
+              carinho e preparar a festa na medida certa para receber vocês.
+            </p>
+          </div>
+          <RsvpForm />
         </div>
       </section>
 
-      {/* RSVP */}
-      <section id="confirmar" className="mx-auto mt-12 max-w-2xl px-4 pb-4">
-        <div className="mb-7 px-2 text-center">
-          <h2 className="font-display text-2xl font-extrabold text-deep">
-            Sua confirmação é muito importante 💙
-          </h2>
-          <p className="mx-auto mt-3 max-w-xl leading-relaxed text-foreground">
-            Confirme apenas se realmente pretende participar. Assim conseguimos organizar tudo com
-            carinho e preparar a festa na medida certa para receber vocês.
-          </p>
-        </div>
-        <RsvpForm />
-      </section>
-
-      <footer className="mt-12 sea-gradient relative overflow-hidden px-4 py-12 text-center">
-        <p className="relative font-display text-xl font-bold text-white drop-shadow-[0_2px_8px_rgba(12,40,70,0.4)] sm:text-2xl">
-          Esperamos você para viver essa aventura no fundo do mar!
+      <footer className="sea-ending relative isolate overflow-hidden px-6 pb-14 pt-16 text-center sm:pb-20 sm:pt-24">
+        <div aria-hidden="true" className="ending-wave absolute inset-x-0 top-0" />
+        <Turtle className="anim-bob mx-auto h-14 w-20 opacity-85" />
+        <p className="relative mx-auto mt-4 max-w-lg font-display text-2xl font-bold leading-snug text-white sm:text-3xl">
+          Esperamos você para viver essa aventura no fundo do mar
         </p>
       </footer>
     </main>
